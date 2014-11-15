@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sjcp.dossier"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="15" />
+	
+    <!-- Note that HelloGlass doesn't not use a theme. Don't use themes. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+       
+        <activity
+            android:name="com.sjcp.dossier.WhoIsActivity"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+			
+            <!-- Voice command found in res/xml/voice_trigger_start -->
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/voice_trigger_start" />
+        </activity>
+        
+        <activity
+            android:name="com.sjcp.dossier.NotifyActivity"
+            android:label="@string/app_name" >
+            </activity>
+        
+        <service
+            android:name="com.sjcp.dossier.NotifyService"
+            android:label="our_service">
+        </service>
+        
+        <service
+            android:name="com.sjcp.dossier.ActuallyNotifyService"
+            android:label="a_our_service">
+        </service>
+    </application>
+
+</manifest>
